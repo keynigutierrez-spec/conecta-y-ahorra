@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta y Ahorra - Energía Sostenible</title>
+    <style>
+        :root {
+            --primary: #10b981;
+            --secondary: #059669;
+            --accent: #34d399;
+            --light: #ecfdf5;
+            --dark: #064e3b;
+            --gray: #6b7280;
+            --success: #059669;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navegación */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Secciones */
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .bg-light {
+            background-color: var(--light);
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .content-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .content-text .highlight {
+            background-color: var(--accent);
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            border-radius: 5px;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .content-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Energy Grid */
+        .energy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .energy-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+
+        .energy-card.non-renewable {
+            border-top: 5px solid #ef4444;
+        }
+
+        .energy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .energy-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .energy-card h3 {
+            padding: 1.5rem 1.5rem 0.5rem;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+
+        .energy-card p {
+            padding: 0.5rem 1.5rem 1.5rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Access Grid */
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .access-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .access-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .access-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .access-card h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .access-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Calculator */
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .calculator-form {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+
+        .calc-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculator-result {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary);
+        }
+
+        .calculator-result h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #d1fae5;
+            font-size: 1rem;
+        }
+
+        .result-item span {
+            color: var(--dark);
+        }
+
+        .result-item strong {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .highlight-result {
+            background-color: var(--accent);
+            padding: 1rem;
+            border-radius: 8px;
+            border-bottom: none;
+            margin-top: 1rem;
+        }
+
+        .highlight-result strong {
+            color: var(--dark);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Tips Section */
+        .tips-list {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .tips-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 20px;
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Animaciones */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Utility classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+
+        .text-muted {
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">⚡ Conecta y Ahorra</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#que-es">¿Qué es?</a></li>
+                <li><a href="#renovables">Renovables</a></li>
+                <li><a href="#no-renovables">No Renovables</a></li>
+                <li><a href="#acceso">Acceso</a></li>
+                <li><a href="#calculadora">Calculadora</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Conecta y Ahorra</h1>
+            <p>Descubre todo sobre energía sostenible y cómo ahorrar en tu hogar</p>
+            <button class="cta-btn" onclick="document.getElementById('que-es').scrollIntoView({behavior: 'smooth'})">Explorar</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=500&h=400&fit=crop" alt="Energía Sostenible">
+        </div>
+    </header>
+
+    <!-- Sección: Estadísticas -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Tipos de Energía Renovable</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Ahorro Potencial con Solar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Energía Infinita del Planeta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: ¿Qué es la Energía? -->
+    <section id="que-es" class="section">
+        <div class="container">
+            <h2>¿Qué es la Energía?</h2>
+            <div class="content-grid">
+                <div class="content-text">
+                    <p>La <strong>energía</strong> es la capacidad de la materia para producir trabajo, movimiento, luz o calor. Es una propiedad fundamental del universo que hace que todo suceda.</p>
+                    
+                    <p class="highlight">La energía no se crea ni se destruye; simplemente se transforma de una forma a otra. Este es el principio fundamental conocido como "Ley de Conservación de la Energía".</p>
+                    
+                    <h3>Importancia de la Energía</h3>
+                    <ul class="tips-list">
+                        <li>Permite que nuestros dispositivos funcionen</li>
+                        <li>Calienta nuestros hogares en invierno</li>
+                        <li>Ilumina nuestras ciudades de noche</li>
+                        <li>Impulsa el transporte mundial</li>
+                        <li>Es esencial para la vida en el planeta</li>
+                    </ul>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1532996122724-8f3c2cd83c5d?w=400&h=400&fit=crop" alt="Concepto de Energía">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Energías Renovables -->
+    <section id="renovables" class="section bg-light">
+        <div class="container">
+            <h2>🌱 Energías Renovables</h2>
+            <p class="intro-text">Las energías renovables son fuentes limpias, infinitas y sostenibles que no contaminan el medio ambiente.</p>
+            
+            <div class="energy-grid">
+                <!-- Solar -->
+                <div class="energy-card renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #FDB813 0%, #FD8D13 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">☀️</div>
+                    <h3>☀️ Solar</h3>
+                    <p><strong>Capturada del sol</strong> mediante paneles fotovoltaicos o colectores térmicos. Una de las fuentes más accesibles y limpias disponibles.</p>
+                    <p><strong>Ventajas:</strong> Gratuita, inagotable, reduce factura eléctrica</p>
+                </div>
+                <!-- Hidráulica -->
+                <div class="energy-card renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #0088FF 0%, #0044CC 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">💧</div>
+                    <h3>💧 Hidráulica</h3>
+                    <p><strong>Obtenida de la fuerza del agua</strong> en movimiento, como en ríos o presas. Muy eficiente y predecible.</p>
+                    <p><strong>Ventajas:</strong> Potente, fiable, sin emisiones</p>
+                </div>
+                <!-- Biomasa -->
+                <div class="energy-card renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #8B4513 0%, #654321 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">🌳</div>
+                    <h3>🌳 Biomasa</h3>
+                    <p><strong>Producida a partir de materia orgánica</strong> residual: plantas, madera, desechos agrícolas. Sostenible y reutilizable.</p>
+                    <p><strong>Ventajas:</strong> Reutiliza residuos, renovable, económica</p>
+                </div>
+                <!-- Geotérmica -->
+                <div class="energy-card renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #FF6B35 0%, #CC3300 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">🌍</div>
+                    <h3>🌍 Geotérmica</h3>
+                    <p><strong>Aprovecha el calor interno de la tierra</strong> desde capas profundas. Estable y confiable durante todo el año.</p>
+                    <p><strong>Ventajas:</strong> Constante, eficiente, baja emisión</p>
+                </div>
+                <!-- Mareomotriz -->
+                <div class="energy-card renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #00CED1 0%, #008B8B 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">🌊</div>
+                    <h3>🌊 Mareomotriz</h3>
+                    <p><strong>Utiliza el movimiento de las mareas</strong> y las olas del océano. Potencial energético enorme en zonas costeras.</p>
+                    <p><strong>Ventajas:</strong> Predecible, potente, sostenible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Energías No Renovables -->
+    <section id="no-renovables" class="section">
+        <div class="container">
+            <h2>⚠️ Energías No Renovables</h2>
+            <p class="intro-text">Estas fuentes se agotan con su uso y generan contaminación ambiental. Dependen de recursos limitados.</p>
+            
+            <div class="energy-grid">
+                <!-- Petróleo -->
+                <div class="energy-card non-renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #333333 0%, #000000 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">⛽</div>
+                    <h3>⛽ Petróleo</h3>
+                    <p><strong>Combustible fósil líquido</strong> empleado principalmente para producción de combustible de transporte y plástico.</p>
+                    <p><strong>Problemas:</strong> Contaminante, agotable, costoso</p>
+                </div>
+                <!-- Carbón -->
+                <div class="energy-card non-renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">⚫</div>
+                    <h3>⚫ Carbón</h3>
+                    <p><strong>Roca sedimentaria negra</strong> muy rica en carbono, utilizada principalmente para generar energía eléctrica.</p>
+                    <p><strong>Problemas:</strong> Alta contaminación, gases invernadero</p>
+                </div>
+                <!-- Gas Natural -->
+                <div class="energy-card non-renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #4A4A4A 0%, #2A2A2A 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">💨</div>
+                    <h3>💨 Gas Natural</h3>
+                    <p><strong>Gas atrapado bajo tierra</strong> usado en cocinas, calefacción de hogares y generación de energía eléctrica limpia.</p>
+                    <p><strong>Problemas:</strong> Limitado, fósil, impacto ambiental</p>
+                </div>
+                <!-- Energía Nuclear -->
+                <div class="energy-card non-renewable">
+                    <div class="energy-card img" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">⚛️</div>
+                    <h3>⚛️ Energía Nuclear</h3>
+                    <p><strong>No es un combustible que se quema,</strong> sino que se rompen partes de uranio liberando calor extremo transformado en electricidad.</p>
+                    <p><strong>Problemas:</strong> Residuos radiactivos, riesgo de accidentes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Acceso a Energía Eléctrica -->
+    <section id="acceso" class="section bg-light">
+        <div class="container">
+            <h2>⚡ ¿Cómo Acceder a Energía Eléctrica sin Red?</h2>
+            <p class="intro-text">Hay tres formas reales y prácticas de tener luz en lugares sin acceso a energía eléctrica tradicional:</p>
+            
+            <div class="access-grid">
+                <div class="access-card">
+                    <div class="access-icon">☀️</div>
+                    <h3>1. Paneles Solares</h3>
+                    <p><strong>Instalas paneles en tu techo</strong> con una batería. Los paneles guardan la energía del sol de día para que tengas luz de noche. Es la solución más práctica y asequible.</p>
+                    <p style="margin-top: 1rem;"><strong>Costo:</strong> Inversión inicial, pero se recupera en años</p>
+                </div>
+                <div class="access-card">
+                    <div class="access-icon">⏰</div>
+                    <h3>2. Consume de Día</h3>
+                    <p><strong>Conecta cargadores, herramientas o televisión</strong> entre las 10:00 a.m. y las 3:00 p.m. Los aparatos usan la luz directa del sol sin tocar las baterías almacenadas.</p>
+                    <p style="margin-top: 1rem;"><strong>Ventaja:</strong> Gratis, no requiere inversión</p>
+                </div>
+                <div class="access-card">
+                    <div class="access-icon">🔌</div>
+                    <h3>3. Agrupa Consumos</h3>
+                    <p><strong>No prendas varios aparatos</strong> al mismo tiempo. Distribuye el uso de televisión, celular y licuadora a lo largo del día. Así las baterías duraran más.</p>
+                    <p style="margin-top: 1rem;"><strong>Beneficio:</strong> Extiende autonomía de baterías</p>
+                </div>
+            </div>
+
+            <div class="tips-list" style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">✅ Consejos Prácticos para Ahorrar Energía</h3>
+                <ul>
+                    <li>Apaga las luces cuando no estés en una habitación</li>
+                    <li>Usa electrodomésticos de bajo consumo (Clase A)</li>
+                    <li>Desconecta dispositivos en standby</li>
+                    <li>Aprovecha la luz natural durante el día</li>
+                    <li>Usa energía solar para calentar agua</li>
+                    <li>Instala bombillas LED en lugar de incandescentes</li>
+                    <li>Mantén puertas y ventanas bien cerradas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Calculadora de Ahorro -->
+    <section id="calculadora" class="section">
+        <div class="container">
+            <h2>💰 Calculadora de Ahorro de Energía</h2>
+            <p class="intro-text">Calcula cuánto podrías ahorrar con energía solar en tu hogar</p>
+            
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="potencia">Potencia del dispositivo (Watts):</label>
+                        <input type="number" id="potencia" placeholder="Ej: 100" min="0" value="100">
+                        <small class="text-muted">Busca esta información en el aparato o manual</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="horas">Horas de uso diarias:</label>
+                        <input type="number" id="horas" placeholder="Ej: 5" min="0" step="0.5" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="dias">Días al mes:</label>
+                        <input type="number" id="dias" placeholder="Ej: 30" min="0" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label for="tarifa">Tarifa por kWh ($):</label>
+                        <input type="number" id="tarifa" placeholder="Ej: 0.15" min="0" step="0.01" value="0.15">
+                    </div>
+                    <button class="calc-btn" onclick="calcularAhorro()">📊 Calcular Ahorro</button>
+                </div>
+                <div class="calculator-result" id="resultado" style="display:none;">
+                    <h3>📈 Resultado del Ahorro Mensual:</h3>
+                    <div class="result-item">
+                        <span>Consumo mensual (kWh):</span>
+                        <strong id="consumo">0</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Costo mensual actual ($):</span>
+                        <strong id="costo">$0.00</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Ahorro anual potencial ($):</span>
+                        <strong id="ahorro-anual">$0.00</strong>
+                    </div>
+                    <div class="result-item highlight-result">
+                        <span>💡 Ahorro mensual con energía solar (60%):</span>
+                        <strong id="ahorro" style="font-size: 1.3rem;">$0.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Contacto -->
+    <section id="contacto" class="section bg-light">
+        <div class="container text-center">
+            <h2>📞 ¿Preguntas? Contactanos</h2>
+            <p style="font-size: 1.2rem; margin: 2rem 0;">Este proyecto fue realizado con dedicación para enseñar sobre energía sostenible</p>
+            
+            <div style="background: white; padding: 2rem; border-radius: 15px; max-width: 500px; margin: 2rem auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <p style="font-size: 1.1rem; margin: 1rem 0;"><strong>📧 Email:</strong> energia@conectayahorra.com</p>
+                <p style="font-size: 1.1rem; margin: 1rem 0;"><strong>📱 Teléfono:</strong> +34 XXX XXX XXX</p>
+                <p style="font-size: 1.1rem; margin: 1rem 0;"><strong>📍 Ubicación:</strong> Tu Escuela</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>📚 Proyecto realizado por alumnos de <strong>Primer Grado de Secundaria - Sección B</strong></p>
+            <p>🌱 Educando sobre energía sostenible para un futuro mejor</p>
+            <p style="margin-top: 1.5rem; color: var(--accent);">Con ❤️ por la educación ambiental</p>
+            <p>&copy; 2026 - Conecta y Ahorra. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calcularAhorro() {
+            // Obtener valores del formulario
+            const potencia = parseFloat(document.getElementById('potencia').value);
+            const horas = parseFloat(document.getElementById('horas').value);
+            const dias = parseFloat(document.getElementById('dias').value);
+            const tarifa = parseFloat(document.getElementById('tarifa').value);
+
+            // Validar que todos los campos estén llenos
+            if (!potencia || !horas || !dias || !tarifa) {
+                alert('⚠️ Por favor, completa todos los campos');
+                return;
+            }
+
+            // Calcular consumo en kWh
+            const consumoKwh = (potencia * horas * dias) / 1000;
+
+            // Calcular costo mensual
+            const costoMensual = consumoKwh * tarifa;
+
+            // Calcular ahorro con energía solar (estimando 60% de ahorro)
+            const ahorroMensual = costoMensual * 0.60;
+            const ahorroAnual = ahorroMensual * 12;
+
+            // Mostrar resultados
+            document.getElementById('consumo').textContent = consumoKwh.toFixed(2) + ' kWh';
+            document.getElementById('costo').textContent = '$' + costoMensual.toFixed(2);
+            document.getElementById('ahorro').textContent = '$' + ahorroMensual.toFixed(2);
+            document.getElementById('ahorro-anual').textContent = '$' + ahorroAnual.toFixed(2);
+            document.getElementById('resultado').style.display = 'block';
+
+            // Scroll suave al resultado
+            setTimeout(() => {
+                document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        // Permitir calcular con Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.form-group input');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        calcularAhorro();
+                    }
+                });
+            });
+
+            // Calcular por defecto al cargar
+            calcularAhorro();
+        });
+    </script>
+</body>
+</html>
