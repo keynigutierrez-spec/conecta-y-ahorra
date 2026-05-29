@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta y Ahorra - Energía Sostenible</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">⚡ Conecta y Ahorra</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#que-es">¿Qué es?</a></li>
+                <li><a href="#renovables">Renovables</a></li>
+                <li><a href="#no-renovables">No Renovables</a></li>
+                <li><a href="#acceso">Acceso</a></li>
+                <li><a href="#calculadora">Calculadora</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Conecta y Ahorra</h1>
+            <p>Descubre todo sobre energía sostenible</p>
+            <button class="cta-btn" onclick="document.getElementById('que-es').scrollIntoView({behavior: 'smooth'})">Explorar</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=500" alt="Energía Sostenible">
+        </div>
+    </header>
+
+    <!-- Sección: ¿Qué es la Energía? -->
+    <section id="que-es" class="section">
+        <div class="container">
+            <h2>¿Qué es la Energía?</h2>
+            <div class="content-grid">
+                <div class="content-text">
+                    <p>La <strong>energía</strong> es la capacidad de la materia para producir trabajo, movimiento, luz o calor. Es una propiedad fundamental del universo que hace que todo suceda.</p>
+                    <p class="highlight">La energía no se crea ni se destruye; simplemente se transforma de una forma a otra.</p>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1532996122724-8f3c2cd83c5d?w=400" alt="Concepto de Energía">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Energías Renovables -->
+    <section id="renovables" class="section bg-light">
+        <div class="container">
+            <h2>Energías Renovables</h2>
+            <div class="energy-grid">
+                <!-- Solar -->
+                <div class="energy-card renewable">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=300" alt="Energía Solar">
+                    <h3>☀️ Solar</h3>
+                    <p>Capturada del sol mediante paneles fotovoltaicos o colectores térmicos. Una de las fuentes más accesibles y limpias.</p>
+                </div>
+                <!-- Hidráulica -->
+                <div class="energy-card renewable">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=300" alt="Energía Hidráulica">
+                    <h3>💧 Hidráulica</h3>
+                    <p>Obtenida de la fuerza del agua en movimiento, como en ríos o presas. Muy eficiente y predecible.</p>
+                </div>
+                <!-- Biomasa -->
+                <div class="energy-card renewable">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300" alt="Biomasa">
+                    <h3>🌱 Biomasa</h3>
+                    <p>Producida a partir de materia orgánica residual (plantas, madera, desechos agrícolas). Sostenible y reutilizable.</p>
+                </div>
+                <!-- Geotérmica -->
+                <div class="energy-card renewable">
+                    <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=300" alt="Energía Geotérmica">
+                    <h3>🌍 Geotérmica</h3>
+                    <p>Aprovecha el calor interno de la tierra desde capas profundas. Estable y confiable.</p>
+                </div>
+                <!-- Mareomotriz -->
+                <div class="energy-card renewable">
+                    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=300" alt="Energía Mareomotriz">
+                    <h3>🌊 Mareomotriz</h3>
+                    <p>Utiliza el movimiento de las mareas y las olas del océano. Potencial energético enorme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Energías No Renovables -->
+    <section id="no-renovables" class="section">
+        <div class="container">
+            <h2>Energías No Renovables</h2>
+            <div class="energy-grid">
+                <!-- Petróleo -->
+                <div class="energy-card non-renewable">
+                    <img src="https://images.unsplash.com/photo-1532996122724-8f3c2cd83c5d?w=300" alt="Petróleo">
+                    <h3>⛽ Petróleo</h3>
+                    <p>Combustible fósil líquido empleado principalmente para la producción de combustible de transporte y plástico.</p>
+                </div>
+                <!-- Carbón -->
+                <div class="energy-card non-renewable">
+                    <img src="https://images.unsplash.com/photo-1578496150910-c53f47e3b64b?w=300" alt="Carbón">
+                    <h3>⚫ Carbón</h3>
+                    <p>Roca sedimentaria de color negro muy rica en carbono, utilizada principalmente para generar energía eléctrica.</p>
+                </div>
+                <!-- Gas Natural -->
+                <div class="energy-card non-renewable">
+                    <img src="https://images.unsplash.com/photo-1583695564636-0e02e1242241?w=300" alt="Gas Natural">
+                    <h3>💨 Gas Natural</h3>
+                    <p>Es un gas atrapado bajo tierra que se usa directo en las cocinas, para la calefacción de hogares y para generar energía eléctrica.</p>
+                </div>
+                <!-- Energía Nuclear -->
+                <div class="energy-card non-renewable">
+                    <img src="https://images.unsplash.com/photo-1580008729229-fbb6486e3550?w=300" alt="Energía Nuclear">
+                    <h3>⚛️ Energía Nuclear</h3>
+                    <p>No es un combustible que se quema, sino que se rompen partes de uranio. Libera calor extremo transformado en electricidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Acceso a Energía Eléctrica -->
+    <section id="acceso" class="section bg-light">
+        <div class="container">
+            <h2>¿Cómo Acceder a Energía Eléctrica sin Red?</h2>
+            <p class="intro-text">Hay tres formas reales de tener luz en lugares sin acceso a energía eléctrica:</p>
+            <div class="access-grid">
+                <div class="access-card">
+                    <div class="access-icon">☀️</div>
+                    <h3>1. Paneles Solares</h3>
+                    <p>Instalas paneles en tu techo con una batería. Guardan la energía del sol de día para que tengas luz de noche.</p>
+                </div>
+                <div class="access-card">
+                    <div class="access-icon">⏰</div>
+                    <h3>2. Consume de Día</h3>
+                    <p>Conecta cargadores, herramientas o televisión entre las 10:00 a.m. y las 3:00 p.m. Los aparatos usan la luz directa del sol sin tocar las baterías.</p>
+                </div>
+                <div class="access-card">
+                    <div class="access-icon">🔌</div>
+                    <h3>3. Agrupa Consumos</h3>
+                    <p>No prendas la televisión, cargues el celular y uses la licuadora al mismo tiempo. Distribúyelos a lo largo del día.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Calculadora de Ahorro -->
+    <section id="calculadora" class="section">
+        <div class="container">
+            <h2>💰 Calculadora de Ahorro de Energía</h2>
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="potencia">Potencia del dispositivo (Watts):</label>
+                        <input type="number" id="potencia" placeholder="Ej: 100" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="horas">Horas de uso diarias:</label>
+                        <input type="number" id="horas" placeholder="Ej: 5" min="0" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="dias">Días al mes:</label>
+                        <input type="number" id="dias" placeholder="Ej: 30" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="tarifa">Tarifa por kWh ($):</label>
+                        <input type="number" id="tarifa" placeholder="Ej: 0.15" min="0" step="0.01">
+                    </div>
+                    <button class="calc-btn" onclick="calcularAhorro()">Calcular Ahorro</button>
+                </div>
+                <div class="calculator-result" id="resultado" style="display:none;">
+                    <h3>Resultado del Ahorro Mensual:</h3>
+                    <div class="result-item">
+                        <span>Consumo mensual (kWh):</span>
+                        <strong id="consumo">0</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Costo mensual actual ($):</span>
+                        <strong id="costo">0</strong>
+                    </div>
+                    <div class="result-item highlight-result">
+                        <span>Ahorro potencial con energía solar (60% mes):</span>
+                        <strong id="ahorro">$0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>📚 Proyecto realizado por alumnos de <strong>Primer Grado de Secundaria - Sección B</strong></p>
+            <p>🌱 Educando sobre energía sostenible para un futuro mejor</p>
+            <p>&copy; 2026 - Conecta y Ahorra. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
